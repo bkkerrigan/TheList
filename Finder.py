@@ -1,4 +1,4 @@
-
+ 
 from bs4 import BeautifulSoup
 import mechanize
 import requests
@@ -17,6 +17,7 @@ class Finder(object):
         browser.form['searchtext'] = name
         response = browser.submit()
         return response
+
     
     def getUserIds(self, name):
 
@@ -28,7 +29,7 @@ class Finder(object):
         for link in links:
             if name in link['href']:
                 studentsFile = str(link).split()
-                studentIds.append(studentsFile[2][1:-2])
+                sudentIds.append(studentsFile[2][1:-2])
         return studentIds
 
     def genRecord(self, tables):
@@ -51,8 +52,19 @@ class Finder(object):
         record = self.genRecord(tables)
         
         return record
-    
-    
-    
-    
+
+    def searchRoom(self, room):
         
+        #Open file
+        file = open('names','r')
+        #Take a persons name
+        i = 0
+        for line in file.readlines():
+            #Figure out why you need to capitalize
+            currentName = str(line[:-2])
+            print(self.getUserIds(currentName.lower()))
+            i += 1
+            if i > 1:
+                break
+        #Search the name
+        #Go through the username
