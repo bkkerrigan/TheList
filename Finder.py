@@ -29,7 +29,7 @@ class Finder(object):
         for link in links:
             if name in link['href']:
                 studentsFile = str(link).split()
-                sudentIds.append(studentsFile[2][1:-2])
+                studentIds.append(studentsFile[2][1:-2])
         return studentIds
 
     def genRecord(self, tables):
@@ -56,15 +56,15 @@ class Finder(object):
     def searchRoom(self, room):
         
         #Open file
-        file = open('names','r')
-        #Take a persons name
+        file = open('namesTest','r')
         i = 0
         for line in file.readlines():
             #Figure out why you need to capitalize
             currentName = str(line[:-2])
-            print(self.getUserIds(currentName.lower()))
-            i += 1
-            if i > 1:
-                break
-        #Search the name
-        #Go through the username
+            currentBatch = self.getUserIds(currentName.lower().capitalize())
+
+            for username in currentBatch:
+                data = self.getIndividualsData(username)
+                if data[6][-5:]== room:
+                    print  username + ": "+ data[1]
+        return
