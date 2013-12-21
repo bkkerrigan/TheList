@@ -42,7 +42,7 @@ class Finder(object):
                     record.append(td.text.encode('ascii','ignore'))
 
         return record
-    
+
     def getIndividualsData(self,userId):
 
         r = requests.post('https://www.mtu.edu/mtuldap/web_lookup/allinfo.cgi?','userid=' + userId+ '&cn=&findoption=People')
@@ -65,6 +65,6 @@ class Finder(object):
 
             for username in currentBatch:
                 data = self.getIndividualsData(username)
-                if data[6][-5:]== room:
+                if len(data)>= 7 and data[6][-5:] == room:
                     print  username + ": "+ data[1]
         return
