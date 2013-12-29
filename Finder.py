@@ -53,6 +53,7 @@ class Finder(object):
         
         return record
 
+    
     def searchRoom(self, room):
         
         #Open file
