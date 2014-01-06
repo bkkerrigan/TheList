@@ -63,7 +63,6 @@ class Finder(object):
             #Figure out why you need to capitalize
             currentName = str(line[:-2])
             currentBatch = self.getUserIds(currentName.lower().capitalize())
-
             for username in currentBatch:
                 data = self.getIndividualsData(username)
                 if len(data)>= 7 and data[6][-5:] == room:
